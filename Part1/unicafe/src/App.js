@@ -24,12 +24,12 @@ const Statistics = (props) => {
   }
 
   const calcAverage = (good, neutral, bad) => {
-    const avg = (good + neutral * 0 + bad * (-1)) / 3
+    const avg = (good + neutral * 0 + bad * (-1)) / addAll(good, neutral, bad)
     return avg
   }
 
   const percent = (good, neutral, bad) => {
-    return good / addAll(good, neutral, bad)
+    return good / addAll(good, neutral, bad) * 100
   }
 
   if (props.good === 0 && props.neutral === 0 && props.bad === 0) {
