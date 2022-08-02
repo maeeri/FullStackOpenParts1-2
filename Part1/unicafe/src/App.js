@@ -1,7 +1,5 @@
 import { useState } from 'react'
 
-
-
 const Button = ({handleClick, text}) => {
   return (
   <button onClick={handleClick}>{text}</button>
@@ -10,11 +8,13 @@ const Button = ({handleClick, text}) => {
 
 const StatisticLine = ({text, value, marker}) => {
   return (
-    <div>{text} {value} {marker}</div>
+    <tr>
+      <td>{text}</td>
+      <td>{value}</td>
+      <td>{marker}</td>
+    </tr>   
   )
 }
-
-
 
 const Statistics = (props) => {
 
@@ -43,15 +43,18 @@ const Statistics = (props) => {
   return (
     <div>
       <h1>statistics</h1>
-        <StatisticLine text='good' value={props.good} />
-        <StatisticLine text='neutral' value={props.neutral} />
-        <StatisticLine text='bad' value={props.bad} />
-        <StatisticLine text='all' value={addAll(props.good, props.neutral, props.bad)} />
-        <StatisticLine text='average' value={calcAverage(props.good, props.neutral, props.bad)} />
-        <StatisticLine text='positive' value={percent(props.good, props.neutral, props.bad)} marker='%' />
+      <table>
+        <tbody>
+          <StatisticLine text='good' value={props.good} />
+          <StatisticLine text='neutral' value={props.neutral} />
+          <StatisticLine text='bad' value={props.bad} />
+          <StatisticLine text='all' value={addAll(props.good, props.neutral, props.bad)} />
+          <StatisticLine text='average' value={calcAverage(props.good, props.neutral, props.bad)} />
+          <StatisticLine text='positive' value={percent(props.good, props.neutral, props.bad)} marker='%' />
+        </tbody>
+      </table>        
     </div>
   )
-
 }
 
 const App = () => {
@@ -72,7 +75,6 @@ const App = () => {
         <Button handleClick={addNeutral} text='neutral' />
         <Button handleClick={addBad} text='bad' />
       </div>
-
       <Statistics good={good} neutral={neutral} bad={bad} /> 
     </div>
   )
