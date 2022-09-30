@@ -7,6 +7,9 @@ const Person = (props) => {
             <td>
                 {props.number}
             </td>
+            <td>
+                <button onClick={props.handleClick}>delete</button>
+            </td>
         </tr>
     )
 }
